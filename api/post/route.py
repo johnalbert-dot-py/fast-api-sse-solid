@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from fastapi.exceptions import HTTPException
 from typing import List
-from .services import create_post, get_all_posts, get_post_by_id
+from .services import create_post, get_all_posts, get_post_by_id, delete_post_by_id
 from .model import PostCreate, Post, PostView
 
 router = APIRouter(
@@ -29,6 +29,14 @@ def posts():
 )
 def get_post(post_id: int):
     post = get_post_by_id(post_id=post_id)
+    if post is None:
+        raise HTTPException(404, detail="Post not found")
+    return post
+
+
+@router.delete("/{post_id}")
+def delete_post(post_id: int):
+    post = delete_post_by_id(post_id=post_id)
     if post is None:
         raise HTTPException(404, detail="Post not found")
     return post

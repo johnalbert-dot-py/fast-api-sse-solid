@@ -5,6 +5,7 @@ from database import engine, SQLModel
 # routes
 from user.route import router as user_router
 from post.route import router as post_router
+from stream.route import router as stream_router
 
 
 def lifespan(app: FastAPI):
@@ -34,6 +35,7 @@ app.add_middleware(
 # routes
 app.include_router(user_router)
 app.include_router(post_router)
+app.include_router(stream_router)
 
 
 @app.get("/")

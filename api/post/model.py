@@ -35,3 +35,5 @@ class PostView(SQLModel):
     user_id: int
     username: str
     email: str
+    created_at: datetime
+    updated_at: datetime

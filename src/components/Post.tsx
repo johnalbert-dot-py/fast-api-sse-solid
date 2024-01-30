@@ -4,19 +4,14 @@ export interface PostProps {
   id: number,
   title: string;
   content: string;
-  user_id: number,
-  user: {
-    username: string;
-    email: string;
-  }
+  user_id: number;
+  username: string;
+  email: string;
   created_at: string;
   updated_at: string;
 }
 
 export default function Post({ post }: { post: PostProps }) {
-
-  console.log(post)
-
   return <div class="flex flex-row items-start justify-start gap-3 px-5 py-6 bg-zinc-100 w-full rounded-md">
 
     <div class="flex flex-col gap-1 text-md items-center">
@@ -31,7 +26,7 @@ export default function Post({ post }: { post: PostProps }) {
           {post.title}
         </h1>
         <span class="text-gray-600 text-sm">
-          posted by {post.user.username} 3 days ago
+          posted by {post.username} 3 days ago
         </span>
       </div>
 
